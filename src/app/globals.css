@@ -18,6 +18,10 @@
   --font-inter: var(--font-inter);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #ffffff;
   color: #111111;

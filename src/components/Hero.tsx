@@ -1,7 +1,9 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform, animate, useSpring } from 'framer-motion';
+import { useRef, useEffect, useState } from 'react';
+import houseImage from '@/app/assets/images/house.png';
 
 export default function Hero() {
   const ref = useRef(null);
@@ -10,89 +12,109 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  // Parallax transforms
-  const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  // Parallax transforms with spring physics for smoothness
+  const imageYRaw = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const imageScaleRaw = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const contentYRaw = useTransform(scrollYProgress, [0, 1], ['0%', '40%']);
+  const opacityRaw = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  // Apply spring physics for smooth transitions
+  const imageY = useSpring(imageYRaw, { stiffness: 100, damping: 30, mass: 0.5 });
+  const imageScale = useSpring(imageScaleRaw, { stiffness: 100, damping: 30, mass: 0.5 });
+  const contentY = useSpring(contentYRaw, { stiffness: 100, damping: 30, mass: 0.5 });
+  const opacity = useSpring(opacityRaw, { stiffness: 100, damping: 30, mass: 0.5 });
+
+  // Counter animation
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const controls = animate(0, 4, {
+      duration: 0.7,
+      delay: 0.7,
+      onUpdate: (value) => setCount(Math.round(value)),
+    });
+    return () => controls.stop();
+  }, []);
 
   return (
-    <section ref={ref} className="min-h-screen flex items-end px-8 pt-24 pb-0 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full relative">
-        {/* Background Image - Large centered portrait with parallax */}
+    <section ref={ref} className="min-h-screen relative overflow-hidden">
+      {/* Full-screen Background Image with parallax */}
+      <motion.div
+        style={{ y: imageY, scale: imageScale }}
+        className="absolute inset-0 w-full h-full"
+      >
+        <Image
+          src={houseImage}
+          alt="Hero background"
+          fill
+          className="object-cover object-bottom"
+          priority
+        />
+      </motion.div>
+
+      {/* Gradient blur overlay from bottom */}
+      <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/15 via-black/0 to-transparent backdrop-blur-[2px] pointer-events-none"></div>
+
+      {/* Content overlay with parallax */}
+      <motion.div
+        style={{ y: contentY, opacity }}
+        className="relative min-h-screen flex flex-col lg:flex-row items-end justify-between px-4 md:px-6 pt-20 md:pt-24 pb-8 md:pb-12 mx-2 md:mx-5 gap-6 lg:gap-0"
+      >
+        {/* Left Content - Headline */}
         <motion.div
-          style={{ y: imageY, scale: imageScale }}
-          className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-[500px] h-[600px] lg:w-[600px] lg:h-[700px]"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="space-y-3 md:space-y-4 z-10 max-w-full lg:max-w-2xl"
         >
-          <div className="relative w-full h-full bg-gradient-to-b from-transparent via-gray-50 to-white">
-            {/* Placeholder for main portrait image */}
-            <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-              <span className="text-sm">Add portrait image here</span>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex items-center gap-2 md:gap-3 text-xs md:text-sm mb-3 md:mb-4"
+          >
+            <div className="relative flex items-center justify-center">
+              <span className="absolute w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full animate-[ripple_3s_ease-out_infinite] opacity-75"></span>
+              <span className="relative w-2 h-2 md:w-2.5 md:h-2.5 bg-green-500 rounded-full"></span>
             </div>
+            <span className="text-gray-500">
+              <span className="text-sm md:text-[15px] font-semibold text-gray-400">{count}</span> tie up projects
+            </span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-2xl md:text-3xl lg:text-5xl font-medium leading-[1.1] text-black"
+          >
+            Empowering Your Future Through Smarter, Next-Gen Financial Solutions
+          </motion.h1>
+        </motion.div>
+
+        {/* Right Content - Description and CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="space-y-4 md:space-y-6 z-10 w-full lg:max-w-sm lg:self-end lg:mb-20"
+        >
+          <p className="text-gray-600 font-medium text-xs md:text-sm leading-relaxed text-justify">
+            We're redefining financial services with Door step service, transparent insights, and seamless experiences that help individuals and businesses make confident financial decisions. Faster and smarter.
+          </p>
+
+          <div className="flex gap-4">
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-black hover:bg-gray-900 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-medium transition-colors cursor-pointer"
+            >
+              Let's Connect
+            </motion.button>
           </div>
         </motion.div>
-
-        {/* Content Grid with parallax */}
-        <motion.div
-          style={{ y: contentY, opacity }}
-          className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-end pb-12"
-        >
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6 z-10"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center gap-3 text-sm"
-            >
-              <div className="relative flex items-center justify-center">
-                <span className="absolute w-4 h-4 bg-green-500 rounded-full animate-[ripple_3s_ease-out_infinite] opacity-75"></span>
-                <span className="relative w-2.5 h-2.5 bg-green-500 rounded-full"></span>
-              </div>
-              <span className="text-gray-600">
-                <span className="text-[15px] font-medium text-black">4</span> tie up projects
-              </span>
-            </motion.div>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight max-w-lg text-black"
-            >
-              Empowering Your Future Through Smarter, Next-Gen Financial Solutions
-            </motion.h1>
-          </motion.div>
-
-          {/* Right Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6 z-10 lg:text-right lg:ml-auto max-w-md"
-          >
-            <p className="text-gray-600 text-base leading-relaxed">
-              As a digital product designer with a strong focus on visual design and Framer websites, he collaborates closely with teams to craft seamless, user-centered experiences. A reliable partner in bringing ideas to life
-            </p>
-
-            <div className="flex gap-4 lg:justify-end">
-              <motion.button
-                type="button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-purple hover:bg-purple-dark text-white px-8 py-3 rounded-full text-sm font-medium transition-colors"
-              >
-                Email Me
-              </motion.button>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

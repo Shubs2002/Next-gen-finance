@@ -58,11 +58,11 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              Need help? Email us at <Link href="mailto:support@nextgen.com" className="text-purple hover:text-purple-light transition-colors">support@nextgen.com</Link> or chat with our 24/7 AI assistant.
+              Need help? Email us at <Link href="mailto:support@nextgen.com" className="text-purple hover:text-purple-light transition-colors">support@nextgen.com</Link>
             </p>
             <Link
               href="/book-call"
-              className="inline-block bg-white hover:bg-gray-300 text-black px-6 py-2.5 rounded text-sm font-medium transition-colors"
+              className="inline-block bg-white hover:bg-gray-300 text-black px-6 py-2.5 rounded-xl text-sm font-medium transition-colors"
             >
               Book a Call
             </Link>
