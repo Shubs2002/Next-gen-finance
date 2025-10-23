@@ -1,0 +1,389 @@
+/* ==========================================================================
+   SERVICES PAGE - CUSTOM STYLES
+   ========================================================================== */
+
+/* ==========================================================================
+   CSS VARIABLES - Easy Customization
+   ========================================================================== */
+
+:root {
+  /* Brand Colors */
+  --services-primary: #000000;
+  --services-primary-hover: #1a1a1a;
+  
+  /* Background Colors */
+  --services-bg: #f9fafb;
+  --services-bg-white: #ffffff;
+  
+  /* Text Colors */
+  --services-text-primary: #111827;
+  --services-text-secondary: #6b7280;
+  --services-text-muted: #9ca3af;
+  
+  /* Border Colors */
+  --services-border: #f3f4f6;
+  
+  /* Typography */
+  --services-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Spacing */
+  --services-spacing-xs: 0.5rem;
+  --services-spacing-sm: 1rem;
+  --services-spacing-md: 1.5rem;
+  --services-spacing-lg: 2rem;
+  --services-spacing-xl: 3rem;
+  --services-spacing-2xl: 4rem;
+  --services-spacing-3xl: 5rem;
+  
+  /* Font Sizes */
+  --services-text-xs: 0.75rem;
+  --services-text-sm: 0.875rem;
+  --services-text-base: 1rem;
+  --services-text-lg: 1.125rem;
+  --services-text-xl: 1.25rem;
+  --services-text-2xl: 1.5rem;
+  --services-text-4xl: 2.25rem;
+  --services-text-5xl: 3rem;
+  --services-text-6xl: 3.75rem;
+  --services-text-7xl: 4.5rem;
+  --services-text-8xl: 6rem;
+  
+  /* Border Radius */
+  --services-radius-full: 9999px;
+  
+  /* Transitions */
+  --services-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   PAGE LAYOUT
+   ========================================================================== */
+
+.services-page {
+  min-height: 100vh;
+  background-color: var(--services-bg);
+  font-family: var(--services-font-sans);
+}
+
+/* ==========================================================================
+   HEADER / NAVIGATION
+   ========================================================================== */
+
+.services-header {
+  background-color: var(--services-bg-white);
+  border-bottom: 1px solid var(--services-border);
+}
+
+.services-nav {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.services-nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5rem;
+}
+
+/* Logo */
+.services-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.services-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--services-primary);
+  border-radius: var(--services-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-logo-icon span {
+  color: white;
+  font-weight: 700;
+  font-size: var(--services-text-sm);
+}
+
+.services-logo-text {
+  font-size: var(--services-text-xl);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--services-text-primary);
+}
+
+/* Navigation Links */
+.services-nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .services-nav-links {
+    display: flex;
+  }
+}
+
+.services-nav-link {
+  font-size: var(--services-text-sm);
+  font-weight: 500;
+  color: var(--services-text-secondary);
+  text-decoration: none;
+  transition: var(--services-transition);
+}
+
+.services-nav-link:hover {
+  color: var(--services-text-primary);
+}
+
+.services-nav-link.active {
+  color: var(--services-text-primary);
+  font-weight: 600;
+}
+
+/* CTA Button */
+.services-cta-btn {
+  background-color: var(--services-primary);
+  color: white;
+  font-size: var(--services-text-sm);
+  font-weight: 500;
+  padding: 0.625rem 1.5rem;
+  border-radius: var(--services-radius-full);
+  border: none;
+  cursor: pointer;
+  transition: var(--services-transition);
+}
+
+.services-cta-btn:hover {
+  background-color: var(--services-primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Phone Number */
+.services-phone {
+  display: none;
+  align-items: center;
+  font-size: var(--services-text-sm);
+  color: var(--services-text-secondary);
+}
+
+@media (min-width: 1024px) {
+  .services-phone {
+    display: flex;
+  }
+}
+
+.services-phone svg {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* ==========================================================================
+   MAIN CONTENT
+   ========================================================================== */
+
+.services-main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .services-main {
+    padding: 5rem 2rem;
+  }
+}
+
+/* ==========================================================================
+   BREADCRUMB
+   ========================================================================== */
+
+.services-breadcrumb {
+  font-size: var(--services-text-sm);
+  color: var(--services-text-muted);
+  margin-bottom: 3rem;
+  letter-spacing: 0.025em;
+}
+
+.services-breadcrumb a {
+  color: var(--services-text-muted);
+  text-decoration: none;
+  transition: var(--services-transition);
+}
+
+.services-breadcrumb a:hover {
+  color: var(--services-text-primary);
+}
+
+.services-breadcrumb span {
+  margin: 0 0.5rem;
+}
+
+.services-breadcrumb .current {
+  color: var(--services-text-primary);
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.services-hero {
+  margin-bottom: 6rem;
+}
+
+@media (min-width: 1024px) {
+  .services-hero {
+    margin-bottom: 8rem;
+  }
+}
+
+.services-hero-title {
+  font-size: var(--services-text-lg);
+  font-weight: 600;
+  color: var(--services-text-primary);
+  line-height: 1.4;
+  max-width: 80rem;
+}
+
+@media (min-width: 768px) {
+  .services-hero-title {
+    font-size: var(--services-text-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-hero-title {
+    font-size: var(--services-text-4xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  .services-hero-title {
+    font-size: var(--services-text-5xl);
+  }
+}
+
+/* ==========================================================================
+   STATS SECTION
+   ========================================================================== */
+
+.services-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .services-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-stats {
+    gap: 5rem;
+  }
+}
+
+/* Stat Card */
+.services-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.services-stat-label {
+  font-size: var(--services-text-xs);
+  font-weight: 600;
+  color: var(--services-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.services-stat-number {
+  font-size: var(--services-text-7xl);
+  font-weight: 700;
+  color: var(--services-text-primary);
+  line-height: 1;
+}
+
+@media (min-width: 1024px) {
+  .services-stat-number {
+    font-size: var(--services-text-8xl);
+  }
+}
+
+.services-stat-description {
+  font-size: var(--services-text-base);
+  color: var(--services-text-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   UTILITIES
+   ========================================================================== */
+
+.services-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes services-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.services-animate-in {
+  animation: services-fade-in 0.6s ease-out;
+}
+
+/* ==========================================================================
+   SMOOTH SCROLLING
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   FOCUS STATES
+   ========================================================================== */
+
+*:focus-visible {
+  outline: 2px solid var(--services-primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   SELECTION
+   ========================================================================== */
+
+::selection {
+  background-color: var(--services-primary);
+  color: white;
+}
