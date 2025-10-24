@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef, useState } from 'react';
+import Navbar from '@/components/Navbar';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -71,6 +72,7 @@ export default function Contact() {
       id="contact" 
       className="min-h-screen bg-background py-20 px-4 overflow-hidden"
     >
+      <Navbar/>
       <motion.div 
         style={{ y, opacity }}
         className="container mx-auto max-w-7xl"
