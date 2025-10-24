@@ -76,7 +76,7 @@ export default function Hero() {
         {/* Content overlay with parallax */}
         <motion.div
           style={{ y: contentY, opacity }}
-          className="relative min-h-screen flex items-end justify-between px-6 pt-24 pb-12 mx-5"
+          className="relative min-h-screen flex items-end justify-between px-6 pt-24 pb-20 mx-5"
         >
           {/* Left Content - Headline */}
           <motion.div
@@ -115,9 +115,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6 z-10 max-w-sm self-end mb-20"
+            className="space-y-6 z-10 max-w-xs self-end mb-20"
           >
-            <p className="text-gray-600 font-medium text-sm leading-relaxed text-justify">
+            <p className="text-gray-600 font-medium text-medium leading-relaxed text-left">
               We're redefining financial services with Door step service, transparent insights, and seamless experiences that help individuals and businesses make confident financial decisions. Faster and smarter.
             </p>
 
@@ -138,7 +138,7 @@ export default function Hero() {
       {/* Mobile Content - Over image at center */}
       <motion.div 
         style={{ opacity }}
-        className="lg:hidden relative min-h-screen flex flex-col justify-center items-center px-4 pt-20 pb-8 mx-2"
+        className="lg:hidden relative min-h-screen flex flex-col justify-center items-center px-4 pt-12 pb-8 mx-2"
       >
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -174,7 +174,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="text-gray-600 font-medium text-xs leading-relaxed text-justify"
+            className="text-gray-600 font-medium text-xs leading-relaxed text-left"
           >
             We're redefining financial services with Door step service, transparent insights, and seamless experiences that help individuals and businesses make confident financial decisions. Faster and smarter.
           </motion.p>

@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Footer from '@/components/Footer';
 import Services from '@/components/Services';
+import Trust from '@/components/Trust';
 
 export default function Home() {
   return (
@@ -9,7 +10,8 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <Services/>
+        <Services />
+        <Trust />
       </main>
       <Footer />
     </>
