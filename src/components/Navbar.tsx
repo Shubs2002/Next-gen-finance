@@ -42,7 +42,7 @@ export default function Navbar() {
               Home
             </Link>
             <Link 
-              href="#services" 
+              href="/#services" 
               onMouseEnter={() => setHoveredLink('services')}
               onMouseLeave={() => setHoveredLink(null)}
               className={`text-[15px] font-medium transition-all duration-[1200ms] px-3 py-2 ${hoveredLink === null || hoveredLink === 'services'
