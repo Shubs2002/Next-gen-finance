@@ -64,7 +64,7 @@ export default function Navbar() {
               How it works
             </Link>
             <Link
-              href="/contact"
+              href="#contact"
               onMouseEnter={() => setHoveredLink('contact')}
               onMouseLeave={() => setHoveredLink(null)}
               className={`text-[15px] font-medium transition-all duration-[1200ms] px-3 py-2 ${hoveredLink === null || hoveredLink === 'contact'
