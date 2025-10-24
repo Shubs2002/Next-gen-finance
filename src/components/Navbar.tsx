@@ -41,8 +41,8 @@ export default function Navbar() {
             >
               Home
             </Link>
-            <Link 
-              href="/about" 
+            <Link
+              href="/about"
               onMouseEnter={() => setHoveredLink('about')}
               onMouseLeave={() => setHoveredLink(null)}
               className={`text-[15px] font-medium transition-all duration-[1200ms] px-3 py-2 ${hoveredLink === null || hoveredLink === 'about'
@@ -52,8 +52,8 @@ export default function Navbar() {
             >
               About
             </Link>
-            <Link 
-              href="#services" 
+            <Link
+              href="/services"
               onMouseEnter={() => setHoveredLink('services')}
               onMouseLeave={() => setHoveredLink(null)}
               className={`text-[15px] font-medium transition-all duration-[1200ms] px-3 py-2 ${hoveredLink === null || hoveredLink === 'services'
