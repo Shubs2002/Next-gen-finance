@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SERVICES PAGE - CUSTOM STYLES
+   SERVICES PAGE - CUSTOM STYLES (Matching Main Landing Page)
    ========================================================================== */
 
 /* ==========================================================================
@@ -10,21 +10,25 @@
   /* Brand Colors */
   --services-primary: #000000;
   --services-primary-hover: #1a1a1a;
+  --services-purple: #8b5cf6;
+  --services-purple-dark: #7c3aed;
+  --services-purple-light: #a78bfa;
   
   /* Background Colors */
-  --services-bg: #f9fafb;
+  --services-bg: #ffffff;
   --services-bg-white: #ffffff;
   
   /* Text Colors */
-  --services-text-primary: #111827;
+  --services-text-primary: #111111;
   --services-text-secondary: #6b7280;
   --services-text-muted: #9ca3af;
   
   /* Border Colors */
   --services-border: #f3f4f6;
   
-  /* Typography */
-  --services-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  /* Typography - Matching Landing Page */
+  --services-font-sans: var(--font-instrument-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --services-font-inter: var(--font-inter), sans-serif;
   
   /* Spacing */
   --services-spacing-xs: 0.5rem;
@@ -63,6 +67,10 @@
   min-height: 100vh;
   background-color: var(--services-bg);
   font-family: var(--services-font-sans);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--services-text-primary);
 }
 
 /* ==========================================================================
@@ -109,13 +117,15 @@
   color: white;
   font-weight: 700;
   font-size: var(--services-text-sm);
+  font-family: var(--services-font-inter);
 }
 
 .services-logo-text {
   font-size: var(--services-text-xl);
   font-weight: 700;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   color: var(--services-text-primary);
+  font-family: var(--services-font-sans);
 }
 
 /* Navigation Links */
@@ -137,6 +147,8 @@
   color: var(--services-text-secondary);
   text-decoration: none;
   transition: var(--services-transition);
+  font-family: var(--services-font-sans);
+  letter-spacing: -0.03em;
 }
 
 .services-nav-link:hover {
@@ -159,6 +171,8 @@
   border: none;
   cursor: pointer;
   transition: var(--services-transition);
+  font-family: var(--services-font-sans);
+  letter-spacing: -0.03em;
 }
 
 .services-cta-btn:hover {
@@ -172,6 +186,8 @@
   align-items: center;
   font-size: var(--services-text-sm);
   color: var(--services-text-secondary);
+  font-family: var(--services-font-sans);
+  letter-spacing: -0.03em;
 }
 
 @media (min-width: 1024px) {
@@ -210,7 +226,9 @@
   font-size: var(--services-text-sm);
   color: var(--services-text-muted);
   margin-bottom: 3rem;
-  letter-spacing: 0.025em;
+  letter-spacing: -0.03em;
+  font-family: var(--services-font-sans);
+  font-weight: 500;
 }
 
 .services-breadcrumb a {
@@ -249,8 +267,10 @@
   font-size: var(--services-text-lg);
   font-weight: 600;
   color: var(--services-text-primary);
-  line-height: 1.4;
+  line-height: 1.2;
   max-width: 80rem;
+  font-family: var(--services-font-sans);
+  letter-spacing: -0.03em;
 }
 
 @media (min-width: 768px) {
@@ -305,7 +325,8 @@
   font-weight: 600;
   color: var(--services-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
+  font-family: var(--services-font-inter);
 }
 
 .services-stat-number {
@@ -313,6 +334,8 @@
   font-weight: 700;
   color: var(--services-text-primary);
   line-height: 1;
+  font-family: var(--services-font-inter);
+  letter-spacing: -0.03em;
 }
 
 @media (min-width: 1024px) {
@@ -325,6 +348,16 @@
   font-size: var(--services-text-base);
   color: var(--services-text-secondary);
   line-height: 1.6;
+  font-family: var(--services-font-sans);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+  
+/* Strong/Bold text uses Inter font */
+.services-stat-description strong,
+.services-stat-description b {
+  font-family: var(--services-font-inter);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -362,6 +395,21 @@
   animation: services-fade-in 0.6s ease-out;
 }
 
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  20% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 /* ==========================================================================
    SMOOTH SCROLLING
    ========================================================================== */
@@ -386,4 +434,30 @@ html {
 ::selection {
   background-color: var(--services-primary);
   color: white;
+}
+
+/* ==========================================================================
+   HEADINGS - Matching Landing Page
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--services-font-sans);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   GLOBAL TYPOGRAPHY OVERRIDES
+   ========================================================================== */
+
+strong,
+b {
+  font-family: var(--services-font-inter);
+  font-weight: 700;
 }
