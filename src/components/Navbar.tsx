@@ -21,6 +21,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 text-black hover:text-purple transition-colors"
             aria-label="Toggle menu"
@@ -91,9 +92,14 @@ export default function Navbar() {
           <div className="hidden md:block md:absolute md:right-0">
             <Link
               href="/apply"
-              className="bg-black hover:bg-purple-dark text-white px-5 py-3 rounded-xl text-[15px] font-medium transition-colors"
+              className="group bg-black hover:bg-purple-dark text-white px-5 py-3 rounded-xl text-[15px] font-medium transition-colors overflow-hidden relative inline-flex items-center justify-center h-[42px] w-[110px]"
             >
-              Apply Now
+              <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap transition-transform duration-300 group-hover:-translate-y-full">
+                Apply Now
+              </span>
+              <span className="absolute inset-0 flex items-center justify-center whitespace-nowrap translate-y-full transition-transform duration-300 group-hover:translate-y-0">
+                Apply Now
+              </span>
             </Link>
           </div>
         </div>

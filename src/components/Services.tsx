@@ -143,7 +143,7 @@ export default function Services() {
           transition={{ duration: 0.6 }}
           className="flex justify-center"
         >
-          <Link href="/Services" className="cursor-pointer">
+          <Link href="/services" className="cursor-pointer">
             <motion.button
               type="button"
               whileHover={{ scale: 1.05 }}

@@ -106,7 +106,7 @@ export default function Trust() {
               {/* Stacked chips container - only stack on desktop */}
               <div className="relative flex flex-col gap-3 lg:gap-0 w-full lg:h-[240px] lg:justify-center">
                 {/* Chip 1 */}
-                <div className="bg-white rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:w-[90%] lg:group-hover:-translate-y-[calc(50%+130px)] lg:group-hover:shadow-lg lg:z-10">
+                <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-[calc(50%+15px)] lg:w-[90%] lg:group-hover:-translate-y-[calc(50%+130px)] lg:group-hover:shadow-lg lg:z-10">
                   <CheckCircle className="w-5 h-5 text-purple flex-shrink-0" />
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
                     20+ years of experience in loan services
@@ -114,7 +114,7 @@ export default function Trust() {
                 </div>
 
                 {/* Chip 2 */}
-                <div className="bg-white rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:w-[90%] lg:group-hover:-translate-y-[calc(50%+45px)] lg:group-hover:shadow-lg lg:z-20">
+                <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-[calc(50%+5px)] lg:w-[90%] lg:group-hover:-translate-y-[calc(50%+45px)] lg:group-hover:shadow-lg lg:z-20">
                   <span className="text-lg">🚀</span>
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
                     Former Service Manager at a Nationalised Bank
@@ -122,7 +122,7 @@ export default function Trust() {
                 </div>
 
                 {/* Chip 3 */}
-                <div className="bg-white rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:w-[90%] lg:group-hover:translate-y-[calc(-50%+45px)] lg:group-hover:shadow-lg lg:z-30">
+                <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:translate-y-[calc(-50%+5px)] lg:w-[90%] lg:group-hover:translate-y-[calc(-50%+45px)] lg:group-hover:shadow-lg lg:z-30">
                   <CheckCircle className="w-5 h-5 text-purple flex-shrink-0" />
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
                     30+ years of expertise in Advances & Investments
@@ -130,7 +130,7 @@ export default function Trust() {
                 </div>
 
                 {/* Chip 4 */}
-                <div className="bg-white rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:w-[90%] lg:group-hover:translate-y-[calc(-50%+130px)] lg:group-hover:shadow-lg lg:z-40">
+                <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:translate-y-[calc(-50%+15px)] lg:w-[90%] lg:group-hover:translate-y-[calc(-50%+130px)] lg:group-hover:shadow-lg lg:z-40">
                   <span className="text-lg">😊</span>
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
                     Guided 200+ clients toward smarter financial decisions

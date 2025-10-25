@@ -5,6 +5,27 @@ export default function Footer() {
   return (
     <footer className="border-t border-gray-800 py-16 px-8 bg-black">
       <div className="max-w-7xl mx-auto space-y-12">
+        {/* Tagline Section */}
+        <div className="text-center space-y-4 pb-8 border-b border-gray-800">
+          {/* Hindi Tagline */}
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+            <span className="text-white">कल के लिए </span>
+            <span className="text-purple">आज सोचिए</span>
+            <span className="text-white">: म्यूचुअल फंड </span>
+            <span className="text-purple">है तो सही है</span>
+            <span className="text-white">!</span>
+          </h2>
+
+          {/* English Tagline */}
+          <p className="text-lg md:text-xl text-gray-400 font-medium">
+            <span className="text-gray-300">Plan for Tomorrow, </span>
+            <span className="text-purple">Today</span>
+            <span className="text-gray-300">: Mutual Funds are the </span>
+            <span className="text-purple">Way to Go</span>
+            <span className="text-gray-300">!</span>
+          </p>
+        </div>
+
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
