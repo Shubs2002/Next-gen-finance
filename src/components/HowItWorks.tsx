@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { Phone, FileText, CheckCircle, Headphones, ArrowDown } from 'lucide-react';
 
 const steps = [
@@ -31,6 +32,14 @@ const steps = [
 ];
 
 export default function HowItWorks() {
+  const router = useRouter();
+
+  const handleCardClick = (index: number) => {
+    if (index === 0) {
+      router.push('/contact');
+    }
+  };
+
   return (
     <section className="py-16 md:py-20 px-4 md:px-6 bg-black overflow-hidden" aria-labelledby="how-it-works-heading">
       <div className="max-w-7xl mx-auto pt-8">
@@ -57,7 +66,8 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative flex-shrink-0 w-[280px] md:w-auto mt-0"
+              onClick={() => handleCardClick(index)}
+              className={`relative flex-shrink-0 w-[280px] md:w-auto mt-0 ${index === 0 ? 'cursor-pointer' : ''}`}
             >
               <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-10">
                 <div className="relative">
@@ -68,7 +78,7 @@ export default function HowItWorks() {
                 </div>
               </div>
 
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 pt-8 hover:bg-white/10 transition-all duration-300 h-full">
+              <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5 pt-8 hover:bg-white/10 transition-all duration-300 h-full ${index === 0 ? 'hover:border-purple/50' : ''}`}>
                 <div className="flex justify-center mb-4">
                   <step.icon className="w-10 h-10 text-purple" />
                 </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 
@@ -56,7 +57,7 @@ export default function FAQ() {
     const [openId, setOpenId] = useState<number | null>(1);
 
     return (
-        <section className="py-16 md:py-20 px-4 md:px-6 bg-gray-50" aria-labelledby="faq-heading">
+        <section id="faq" className="py-16 md:py-20 px-4 md:px-6 bg-gray-50" aria-labelledby="faq-heading">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                     <motion.div
@@ -70,12 +71,14 @@ export default function FAQ() {
                             Answers to common questions to help you understand{' '}
                             <span className="text-black">the process and how we can work together</span>
                         </h2>
-                        <button
-                            type="button"
-                            className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors"
-                        >
-                            Email Me
-                        </button>
+                        <Link href="/contact">
+                            <button
+                                type="button"
+                                className="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition-colors cursor-pointer"
+                            >
+                                Email Us
+                            </button>
+                        </Link>
                     </motion.div>
 
                     <motion.div

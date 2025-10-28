@@ -1,16 +1,31 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Contact() {
+  const CAL_URL = process.env.NEXT_PUBLIC_CAL_URL;
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://app.cal.com/embed/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,15 +50,9 @@ export default function Contact() {
   const meetingTypes = [
     {
       icon: '💼',
-      title: 'Business Consultation',
-      duration: '30-60 minutes',
+      title: 'Business Meeting',
+      duration: '30 minutes',
       bgColor: 'bg-amber-50'
-    },
-    {
-      icon: '🎯',
-      title: 'Project Discussion',
-      duration: '45 minutes',
-      bgColor: 'bg-red-50'
     },
     {
       icon: '💬',
@@ -52,6 +61,10 @@ export default function Contact() {
       bgColor: 'bg-gray-50'
     }
   ];
+
+  const currentDate = new Date();
+  const currentMonth = currentDate.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+  const currentDay = currentDate.getDate();
 
   return (
     <>
@@ -283,28 +296,37 @@ export default function Contact() {
                 >
                   <div className="text-center">
                     <div className="text-xs font-bold text-white bg-gradient-to-r from-purple to-purple/80 rounded-t-lg px-3 py-1">
-                      JAN
+                      {currentMonth}
                     </div>
                     <div className="text-2xl font-bold text-gray-800 px-3 py-1">
-                      17
+                      {currentDay}
                     </div>
                   </div>
                 </motion.div>
 
-                <h4 className="text-base md:text-lg font-semibold text-gray-800 mb-2 relative z-10">
-                  Calendar Integration
-                </h4>
                 <p className="text-xs md:text-sm text-gray-600 mb-4 relative z-10">
-                  To complete your calendar setup, you'll need to integrate with your preferred scheduling service.
+                  Click the button below to schedule a meeting at your convenience.
                 </p>
 
                 <motion.button
                   type="button"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).Cal) {
+                      (window as any).Cal('init', { origin: 'https://app.cal.com' });
+                      (window as any).Cal('ui', {
+                        styles: { branding: { brandColor: '#8b5cf6' } },
+                        hideEventTypeDetails: false,
+                      });
+                      (window as any).Cal('openModal', { calLink: CAL_URL?.replace('https://cal.com/', '') });
+                    } else {
+                      window.open(CAL_URL, '_blank');
+                    }
+                  }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="relative z-10 w-full bg-gradient-to-r from-purple to-purple/80 hover:from-purple/90 hover:to-purple/70 text-white py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
                 >
-                  Open Calendly
+                  Schedule Meeting
                   <motion.span
                     animate={{ rotate: [0, 15, -15, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -315,14 +337,14 @@ export default function Contact() {
 
                 <div className="mt-4 pt-4 border-t border-gray-200 relative z-10">
                   <p className="text-xs text-gray-500 mb-2">
-                    Popular scheduling options:
+                    Powered by Cal.com
                   </p>
-                  <div className="flex items-center justify-center gap-3 text-xs text-gray-600">
-                    <span>Calendly</span>
+                  <div className="flex items-center justify-center gap-2 text-xs text-gray-600">
+                    <span>✓ Secure</span>
                     <span>•</span>
-                    <span>Acuity</span>
+                    <span>✓ Easy to use</span>
                     <span>•</span>
-                    <span>Cal.com</span>
+                    <span>✓ Instant confirmation</span>
                   </div>
                 </div>
               </div>
@@ -431,13 +453,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-purple/20 to-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4 shadow-md group-hover:shadow-lg transition-all"
               >
-                <motion.span
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                  className="text-2xl md:text-3xl inline-block"
-                >
-                  ⏰
-                </motion.span>
+                <span className="text-2xl md:text-3xl">⏰</span>
               </motion.div>
               <h4 className="text-black font-semibold mb-2 text-sm md:text-base">
                 Business Hours
