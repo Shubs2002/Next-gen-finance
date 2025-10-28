@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nextgenfinance.com/sitemap.xml
+Sitemap: https://next-gen-finance.vercel.app/sitemap.xml
