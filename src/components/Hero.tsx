@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, animate, useSpring } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import houseImage from '@/app/assets/images/house.png';
@@ -37,8 +38,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={ref} className="min-h-screen relative overflow-hidden">
-      {/* Full-screen Background Image with parallax - Mobile */}
+    <section ref={ref} className="min-h-screen relative overflow-hidden" aria-label="Hero section">
       <div className="lg:hidden">
         <motion.div 
           style={{ scale: imageScale }}
@@ -54,7 +54,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Desktop Layout - Text over image */}
       <div className="hidden lg:block">
         {/* Full-screen Background Image with parallax */}
         <motion.div
@@ -70,15 +69,12 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* Gradient blur overlay from bottom */}
         <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-t from-black/15 via-black/0 to-transparent backdrop-blur-[2px] pointer-events-none"></div>
 
-        {/* Content overlay with parallax */}
         <motion.div
           style={{ y: contentY, opacity }}
           className="relative min-h-screen flex items-end justify-between px-6 pt-24 pb-20 mx-5"
         >
-          {/* Left Content - Headline */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,7 +106,6 @@ export default function Hero() {
             </motion.h1>
           </motion.div>
 
-          {/* Right Content - Description and CTA */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,20 +117,21 @@ export default function Hero() {
             </p>
 
             <div className="flex gap-4">
-              <motion.button
-                type="button"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-black hover:bg-gray-900 text-white px-8 py-3 rounded-xl text-sm font-medium transition-colors cursor-pointer"
-              >
-                Let's Connect
-              </motion.button>
+              <Link href="/contact">
+                <motion.button
+                  type="button"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-black hover:bg-gray-900 text-white px-8 py-3 rounded-xl text-sm font-medium transition-colors cursor-pointer"
+                >
+                  Let's Connect
+                </motion.button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Mobile Content - Over image at center */}
       <motion.div 
         style={{ opacity }}
         className="lg:hidden relative min-h-screen flex flex-col justify-center items-center px-4 pt-12 pb-8 mx-2"
@@ -184,14 +180,16 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <motion.button
-              type="button"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-black hover:bg-gray-900 text-white px-6 py-2.5 rounded-xl text-xs font-medium transition-colors cursor-pointer"
-            >
-              Let's Connect
-            </motion.button>
+            <Link href="/contact">
+              <motion.button
+                type="button"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-black hover:bg-gray-900 text-white px-6 py-2.5 rounded-xl text-xs font-medium transition-colors cursor-pointer"
+              >
+                Let's Connect
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
       </motion.div>

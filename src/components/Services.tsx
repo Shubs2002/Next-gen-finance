@@ -43,9 +43,8 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-20 px-4 pt-30 md:px-6 bg-white">
+    <section className="py-20 px-4 pt-30 md:px-6 bg-white" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-8 md:gap-12 mb-16">
           <motion.h2
             initial={{ opacity: 0, x: -60 }}
@@ -53,6 +52,7 @@ export default function Services() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="text-medium md:text-xl font-medium text-gray-500"
+            id="services-heading"
           >
             Services
           </motion.h2>
@@ -68,7 +68,6 @@ export default function Services() {
           </motion.p>
         </div>
 
-        {/* Portfolio Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-12">
           {services.map((service, index) => (
             <motion.div
@@ -79,7 +78,6 @@ export default function Services() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group"
             >
-              {/* Image Container - Smaller sizes */}
               <div className={`relative mb-3 overflow-hidden rounded-xl ${index === 0 ? 'aspect-[4/3] lg:aspect-[3/4]' :
                 index === 1 ? 'aspect-[4/3] lg:aspect-[3/2]' :
                   'aspect-[4/3] lg:aspect-[4/5]'
@@ -92,7 +90,6 @@ export default function Services() {
                 />
               </div>
 
-              {/* Content */}
               <div className="space-y-2">
                 <p className="text-[11px] text-gray-500 uppercase tracking-wide font-medium">
                   {service.category} <span className="mx-1.5">•</span> {service.date}
@@ -104,7 +101,6 @@ export default function Services() {
                   {service.description}
                 </p>
 
-                {/* Tags as Chips */}
                 <div className="flex flex-wrap gap-1.5 pt-1">
                   {service.tags.map((tag, i) => (
                     <span
@@ -116,7 +112,6 @@ export default function Services() {
                   ))}
                 </div>
 
-                {/* View Details CTA */}
                 <div className="pt-2">
                   <Link href={service.link}>
                     <motion.button
@@ -135,7 +130,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

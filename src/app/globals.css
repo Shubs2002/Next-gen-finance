@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -29,6 +30,7 @@ body {
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.2;
+  overflow-x: hidden;
 }
 
 h1,
@@ -53,11 +55,6 @@ b {
   color: #ffffff;
 }
 
-::-moz-selection {
-  background-color: #000000;
-  color: #ffffff;
-}
-
 @keyframes ripple {
   0% {
     transform: scale(1);
@@ -75,7 +72,6 @@ b {
   }
 }
 
-/* Hide scrollbar */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

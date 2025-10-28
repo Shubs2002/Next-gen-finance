@@ -3,11 +3,9 @@ import { Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-800 py-16 px-8 bg-black">
+    <footer className="border-t border-gray-800 py-16 px-8 bg-black" role="contentinfo">
       <div className="max-w-7xl mx-auto space-y-12">
-        {/* Tagline Section */}
         <div className="text-center space-y-4 pb-8 border-b border-gray-800">
-          {/* Hindi Tagline */}
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold">
             <span className="text-white">कल के लिए </span>
             <span className="text-purple">आज सोचिए</span>
@@ -16,7 +14,6 @@ export default function Footer() {
             <span className="text-white">!</span>
           </h2>
 
-          {/* English Tagline */}
           <p className="text-lg md:text-xl text-gray-400 font-medium">
             <span className="text-gray-300">Plan for Tomorrow, </span>
             <span className="text-purple">Today</span>
@@ -26,9 +23,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-lg font-normal text-white">NextGen</h3>
             <p className="text-sm text-gray-400 leading-relaxed">
@@ -39,7 +34,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-medium mb-4 text-sm text-white">Quick Links</h4>
             <ul className="space-y-3 text-sm">
@@ -51,7 +45,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div>
             <h4 className="font-medium mb-4 text-sm text-white">Legal</h4>
             <ul className="space-y-3 text-sm">
@@ -61,7 +54,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact & Social */}
           <div>
             <h4 className="font-medium mb-4 text-sm text-white">Connect With Us</h4>
             <div className="flex gap-4 mb-6">
@@ -82,7 +74,7 @@ export default function Footer() {
               Need help? Email us at <Link href="mailto:support@nextgen.com" className="text-purple hover:text-purple-light transition-colors">support@nextgen.com</Link>
             </p>
             <Link
-              href="/book-call"
+              href="/contact"
               className="inline-block bg-white hover:bg-gray-300 text-black px-6 py-2.5 rounded-xl text-sm font-medium transition-colors"
             >
               Book a Call
@@ -90,7 +82,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800 text-sm text-gray-400">
           <p>&copy; {new Date().getFullYear()} <span className='text-purple'>NextGen</span>  – Redefining finance for the digital age.</p>
         </div>

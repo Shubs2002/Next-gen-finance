@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { Quote, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
 
-// JSON data structure for easy editing
 const testimonials = [
     {
         id: 1,
@@ -63,9 +62,8 @@ export default function Testimonials() {
     };
 
     return (
-        <section className="py-16 md:py-20 px-4 md:px-6 bg-gradient-to-br from-purple/5 via-white to-purple/10">
+        <section className="py-16 md:py-20 px-4 md:px-6 bg-gradient-to-br from-purple/5 via-white to-purple/10" aria-labelledby="testimonials-heading">
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +71,7 @@ export default function Testimonials() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-black mb-4">
+                    <h2 id="testimonials-heading" className="text-3xl md:text-4xl lg:text-5xl font-medium text-black mb-4">
                         Client Stories
                     </h2>
                     <p className="text-base md:text-lg text-gray-600 font-medium max-w-2xl mx-auto">
@@ -81,9 +79,7 @@ export default function Testimonials() {
                     </p>
                 </motion.div>
 
-                {/* Testimonials Container with Navigation */}
                 <div className="relative">
-                    {/* Navigation Buttons */}
                     <button
                         type="button"
                         onClick={() => scroll('left')}
@@ -101,7 +97,6 @@ export default function Testimonials() {
                         <ChevronRight className="w-5 h-5" />
                     </button>
 
-                    {/* Testimonials Scrollable */}
                     <div ref={scrollRef} className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
                         {testimonials.map((testimonial, index) => (
                             <motion.div
@@ -113,7 +108,6 @@ export default function Testimonials() {
                                 whileHover={{ y: -8 }}
                                 className="flex-shrink-0 w-[85vw] md:w-[400px] bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
                             >
-                                {/* Profile */}
                                 <div className="flex items-center gap-4 mb-4">
                                     <div className="relative w-14 h-14 rounded-full overflow-hidden ring-2 ring-purple/20">
                                         {testimonial.image.startsWith('http') ? (
@@ -137,14 +131,12 @@ export default function Testimonials() {
                                     </div>
                                 </div>
 
-                                {/* Rating */}
                                 <div className="flex gap-1 mb-3">
                                     {[...Array(testimonial.rating)].map((_, i) => (
                                         <Star key={i} className="w-4 h-4 fill-purple text-purple" />
                                     ))}
                                 </div>
 
-                                {/* Quote */}
                                 <Quote className="w-6 h-6 text-purple/30 mb-2" />
                                 <p className="text-sm text-gray-700 leading-relaxed font-medium">
                                     {testimonial.testimonial}

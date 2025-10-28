@@ -6,22 +6,20 @@ import { Award, Users, CheckCircle, ExternalLink, Quote } from 'lucide-react';
 
 export default function Trust() {
   return (
-    <section className="py-12 md:py-20 px-4 md:px-6 bg-white">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-white" aria-labelledby="trust-heading">
       <div className="max-w-7xl mx-auto p-4 md:p-10 lg:p-20">
-        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
+          id="trust-heading"
           className="text-2xl md:text-3xl lg:text-5xl font-medium text-black text-center mb-8 md:mb-16"
         >
           Trusted by Experience, Driven by Vision
         </motion.h2>
 
-        {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-3 lg:mt-8">
-          {/* Left Card - About Us Connector */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +49,6 @@ export default function Trust() {
             </div>
           </motion.div>
 
-          {/* Middle Card - Quote Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -76,7 +73,6 @@ export default function Trust() {
             </div>
           </motion.div>
 
-          {/* Right Card - Stats as Stacked Chips */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,8 +80,6 @@ export default function Trust() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="group bg-[#f5f5f5] rounded-2xl p-6 md:p-10 md:px-3 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-center relative min-h-[380px] md:min-h-[480px] lg:overflow-visible"
           >
-            {/* Trusted by many badge - visible on mobile/tablet at top, hover on desktop at 50% up */}
-            {/* Mobile/Tablet version */}
             <div className="lg:hidden mb-4 flex justify-center">
               <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg">
                 <Users className="w-5 h-5" />
@@ -93,7 +87,6 @@ export default function Trust() {
               </div>
             </div>
 
-            {/* Desktop version - 50% above card on hover */}
             <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 -top-5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
               <div className="inline-flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg">
                 <Users className="w-5 h-5" />
@@ -101,11 +94,8 @@ export default function Trust() {
               </div>
             </div>
 
-            {/* White smoke background container with fixed height */}
             <div className="bg-[#f5f5f5] rounded-2xl p-6 px-0 flex items-center justify-center lg:min-h-[320px]">
-              {/* Stacked chips container - only stack on desktop */}
               <div className="relative flex flex-col gap-3 lg:gap-0 w-full lg:h-[240px] lg:justify-center">
-                {/* Chip 1 */}
                 <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-[calc(50%+15px)] lg:w-[90%] lg:group-hover:-translate-y-[calc(50%+130px)] lg:group-hover:shadow-lg lg:z-10">
                   <CheckCircle className="w-5 h-5 text-purple flex-shrink-0" />
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
@@ -113,7 +103,6 @@ export default function Trust() {
                   </span>
                 </div>
 
-                {/* Chip 2 */}
                 <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-[calc(50%+5px)] lg:w-[90%] lg:group-hover:-translate-y-[calc(50%+45px)] lg:group-hover:shadow-lg lg:z-20">
                   <span className="text-lg">🚀</span>
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
@@ -121,7 +110,6 @@ export default function Trust() {
                   </span>
                 </div>
 
-                {/* Chip 3 */}
                 <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:translate-y-[calc(-50%+5px)] lg:w-[90%] lg:group-hover:translate-y-[calc(-50%+45px)] lg:group-hover:shadow-lg lg:z-30">
                   <CheckCircle className="w-5 h-5 text-purple flex-shrink-0" />
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">
@@ -129,7 +117,6 @@ export default function Trust() {
                   </span>
                 </div>
 
-                {/* Chip 4 */}
                 <div className="bg-white border border-gray-200 rounded-full px-4 py-3 flex items-center justify-center gap-1 shadow-sm transition-all duration-500 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/2 lg:translate-y-[calc(-50%+15px)] lg:w-[90%] lg:group-hover:translate-y-[calc(-50%+130px)] lg:group-hover:shadow-lg lg:z-40">
                   <span className="text-lg">😊</span>
                   <span className="text-sm md:text-[15px] text-gray-700 font-medium text-center">

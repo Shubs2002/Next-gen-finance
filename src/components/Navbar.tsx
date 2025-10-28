@@ -9,17 +9,15 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100" role="navigation" aria-label="Main navigation">
       <div className="px-4 md:px-6 my-2 mx-2 md:mx-5 py-3 md:py-4">
         <div className="flex items-center justify-between md:justify-center relative">
-          {/* Logo - Left */}
           <div className="md:absolute md:left-0">
             <Link href="/" className="text-sm md:text-base font-normal text-black hover:text-purple transition-colors">
               NextGen Finance
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -29,7 +27,6 @@ export default function Navbar() {
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          {/* Navigation Links - Center (Desktop) */}
           <div className="hidden md:flex items-center gap-2">
             <Link
               href="/"
@@ -88,7 +85,6 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Apply Now CTA - Right (Desktop) */}
           <div className="hidden md:block md:absolute md:right-0">
             <Link
               href="/apply"
@@ -104,7 +100,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-3">
             <Link

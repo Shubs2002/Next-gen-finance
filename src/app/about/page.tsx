@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Award, Users, Target, Heart, TrendingUp, Shield, Clock, Sparkles } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Image from 'next/image';
 
 const values = [
   {

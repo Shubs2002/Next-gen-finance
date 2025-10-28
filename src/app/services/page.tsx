@@ -1,7 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import './styles.css';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Our Services - Home Loans, Education Loans & Mutual Funds',
+  description: 'Comprehensive financial services including home loans with flexible EMI, education loans for higher studies, and mutual fund investments. Expert guidance with doorstep convenience.',
+  openGraph: {
+    title: 'Financial Services - NextGen Finance',
+    description: 'Home loans, education loans, mutual funds, and investment planning with expert guidance and doorstep service.',
+  },
+};
 
 export default function ServicesPage() {
   return (

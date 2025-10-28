@@ -6,8 +6,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Contact() {
-
-  // Form state
   const [formData, setFormData] = useState({
     name: '',
     email: '',
