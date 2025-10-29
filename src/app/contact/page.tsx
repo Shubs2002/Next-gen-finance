@@ -2,11 +2,14 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import emailjs from '@emailjs/browser';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Contact() {
   const CAL_URL = process.env.NEXT_PUBLIC_CAL_URL;
+  const router = useRouter();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -14,18 +17,32 @@ export default function Contact() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://app.cal.com/embed/embed.js';
     script.async = true;
     document.body.appendChild(script);
 
+    const handleCalEvent = (e: any) => {
+      if (e.detail?.type === 'bookingSuccessful') {
+        setTimeout(() => {
+          router.push('/');
+        }, 2000);
+      }
+    };
+
+    window.addEventListener('cal:bookingSuccessful', handleCalEvent);
+
     return () => {
       if (document.body.contains(script)) {
         document.body.removeChild(script);
       }
+      window.removeEventListener('cal:bookingSuccessful', handleCalEvent);
     };
-  }, []);
+  }, [router]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -35,16 +52,46 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'NextGen Finance',
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+        
+        setTimeout(() => {
+          setSubmitStatus('idle');
+        }, 5000);
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus('error');
+      
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const meetingTypes = [
@@ -226,17 +273,20 @@ export default function Contact() {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-purple to-purple/80 hover:from-purple/90 hover:to-purple/70 text-white py-3 md:py-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer"
+                  disabled={isSubmitting}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  className={`w-full bg-gradient-to-r from-purple to-purple/80 hover:from-purple/90 hover:to-purple/70 text-white py-3 md:py-4 rounded-xl font-medium transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl cursor-pointer ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                 >
-                  Send Message
-                  <motion.span
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    📩
-                  </motion.span>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {!isSubmitting && (
+                    <motion.span
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      📩
+                    </motion.span>
+                  )}
                 </motion.button>
               </form>
             </motion.div>
@@ -335,18 +385,7 @@ export default function Contact() {
                   </motion.span>
                 </motion.button>
 
-                <div className="mt-4 pt-4 border-t border-gray-200 relative z-10">
-                  <p className="text-xs text-gray-500 mb-2">
-                    Powered by Cal.com
-                  </p>
-                  <div className="flex items-center justify-center gap-2 text-xs text-gray-600">
-                    <span>✓ Secure</span>
-                    <span>•</span>
-                    <span>✓ Easy to use</span>
-                    <span>•</span>
-                    <span>✓ Instant confirmation</span>
-                  </div>
-                </div>
+
               </div>
 
               {/* Meeting Types */}
@@ -467,6 +506,35 @@ export default function Contact() {
       </div>
     </section>
     <Footer />
+
+    {/* Snackbar Notifications */}
+    {submitStatus === 'success' && (
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        className="fixed bottom-6 right-6 z-50 bg-green-50 border-2 border-green-200 text-green-800 px-6 py-4 rounded-xl shadow-2xl max-w-md"
+      >
+        <div>
+          <p className="font-semibold">Success!</p>
+          <p className="text-sm opacity-80">Message sent successfully. We'll get back to you soon.</p>
+        </div>
+      </motion.div>
+    )}
+
+    {submitStatus === 'error' && (
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        className="fixed bottom-6 right-6 z-50 bg-red-50 border-2 border-red-200 text-red-800 px-6 py-4 rounded-xl shadow-2xl max-w-md"
+      >
+        <div>
+          <p className="font-semibold">Error!</p>
+          <p className="text-sm opacity-80">Failed to send message. Please try again or email us directly.</p>
+        </div>
+      </motion.div>
+    )}
     </>
   );
 }
